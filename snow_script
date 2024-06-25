@@ -1,0 +1,53 @@
+(function() {
+    const snowflakesCount = 100; // Количество снежинок
+    const snowflakes = [];
+
+    // Создаем стиль для снежинок
+    const style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = `
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 1000;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Функция для создания снежинки
+    function createSnowflake() {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+        snowflake.style.opacity = Math.random();
+        snowflake.style.transform = `scale(${Math.random()})`;
+
+        document.body.appendChild(snowflake);
+        snowflakes.push(snowflake);
+
+        setTimeout(() => {
+            snowflake.remove();
+        }, 5000); // Удаляем снежинку через 5 секунд
+    }
+
+    // Запускаем создание снежинок
+    setInterval(createSnowflake, 100);
+
+    // Создаем начальные снежинки
+    for (let i = 0; i < snowflakesCount; i++) {
+        createSnowflake();
+    }
+})();
