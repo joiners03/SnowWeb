@@ -5,3 +5,5 @@ How to Use:
 	3.	Paste the entire script into the console and press Enter.
 
 After running the script, you will see animated snowflakes falling on the webpage. If you have any requests for changes or improvements, let me know! ❄️😊
+
+Hold my beer
